@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --color-elira-bg: #050211;
+  --color-elira-surface: #110e21;
+  --color-elira-elevated: #18142d;
+  --color-elira-border: #28243e;
+  --color-elira-accent: #fdff50;
+  --color-elira-accent-hover: #e2e438;
+  --color-elira-text: #D9D3E8;
+  --color-elira-text-muted: #9f9ab2;
+  --color-elira-title: #FFFEFE;
+}
+
+@layer base {
+  html, body {
+    background-color: #050211;
+    color: #D9D3E8;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: #FFFEFE;
+  }
+}
+
+/* Fluid Moving Mesh / Aurora Animations */
+@keyframes fluid-blob-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(70px, -50px, 0) scale(1.18) rotate(120deg);
+  }
+  66% {
+    transform: translate3d(-40px, 60px, 0) scale(0.9) rotate(240deg);
+  }
+}
+
+@keyframes fluid-blob-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(-80px, 60px, 0) scale(1.15) rotate(-120deg);
+  }
+  66% {
+    transform: translate3d(50px, -70px, 0) scale(0.88) rotate(-240deg);
+  }
+}
+
+@keyframes fluid-blob-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(60px, 40px, 0) scale(1.22);
+  }
+}
+
+@keyframes fluid-blob-4 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-50px, -40px, 0) scale(1.15);
+  }
+}
+
+.animate-fluid-1 {
+  animation: fluid-blob-1 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-fluid-2 {
+  animation: fluid-blob-2 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-fluid-3 {
+  animation: fluid-blob-3 13s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-fluid-4 {
+  animation: fluid-blob-4 17s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Glassmorphism Skill Specifications (iart-ai/web-animation-skills) */
+
+/* 1. Minimalist Desktop Liquid Glass Pill (Exact Match to User Image 1) */
+.glass-pill-minimal {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+  isolation: isolate;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-pill-minimal:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.glass-pill-minimal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.03) 55%,
+    rgba(255, 255, 255, 0.25)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-pill-minimal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 2;
+}
+
+/* Navigation Items on Minimal Glass */
+.glass-item-minimal {
+  position: relative;
+  z-index: 3;
+  color: #D9D3E8;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.glass-item-minimal:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.glass-active-minimal {
+  position: relative;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 2px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 9999px;
+  color: #fdff50;
+  font-weight: 700;
+}
+.glass-sheet {
+  border-radius: 24px;
+  background: rgba(14, 10, 30, 0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  isolation: isolate;
+}
+
+.glass-sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.2)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 2;
+}
+
+/* 3. Navigation Items on Minimal Glass */
+.glass-item-minimal {
+  position: relative;
+  z-index: 3;
+  color: rgba(217, 211, 232, 0.85);
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.glass-item-minimal:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.glass-active-minimal {
+  position: relative;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 2px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 9999px;
+  color: #fdff50;
+  font-weight: 600;
+}
+
+/* 4. Accessibility & Media Fallbacks */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-pill-minimal, .glass-sheet {
+    background: #110e21 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+  .glass-pill-minimal::after, .glass-sheet::after {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-pill-minimal, .glass-sheet {
+    transition: none !important;
+  }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-pill-minimal, .glass-sheet {
+    background: rgba(17, 14, 33, 0.95) !important;
+  }
+}
+
+/* Infinite Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Elira Neon Glow utilities */
+.glow-yellow {
+  box-shadow: 0 0 45px -5px rgba(253, 255, 80, 0.28);
+}
+
+.glow-yellow-sm {
+  box-shadow: 0 0 20px 0 rgba(253, 255, 80, 0.2);
+}
+
+.glow-yellow-pill {
+  box-shadow: 0 0 15px 0 rgba(253, 255, 80, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050211;
+}
+::-webkit-scrollbar-thumb {
+  background: #252238;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fdff50;
+}
