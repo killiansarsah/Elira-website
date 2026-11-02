@@ -37,7 +37,7 @@ export const PartnerMarquee = () => {
   const marqueeItems = [...setOfPartners, ...setOfPartners];
 
   return (
-    <section className="py-10 sm:py-16 bg-white border-y border-slate-200 overflow-hidden relative shadow-sm">
+    <section className="py-10 sm:py-16 bg-white border-y border-slate-200 overflow-hidden overflow-x-clip max-w-full relative shadow-sm [contain:paint]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-9 text-center">
         <p className="text-[11px] sm:text-xs font-bold tracking-widest text-slate-500 uppercase">
           Trusted Clients & Institutional Partners
@@ -45,7 +45,7 @@ export const PartnerMarquee = () => {
       </div>
 
       {/* Edge gradient mask for smooth fade-in and fade-out */}
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+      <div className="relative w-full overflow-hidden overflow-x-clip max-w-full [contain:paint] [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
         <div className="animate-marquee flex items-center gap-10 sm:gap-18 md:gap-26 py-2 select-none">
           {marqueeItems.map((partner, index) => {
             const logoImage = (

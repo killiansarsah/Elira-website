@@ -11,7 +11,7 @@ export function App() {
   return (
     <div className="min-h-screen bg-[#050211] text-[#D9D3E8] selection:bg-[#fdff50] selection:text-[#050211] overflow-x-hidden w-full max-w-full">
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden w-full max-w-full">
         <Hero />
         <SmartSaaSSection />
         <ProductsSection />
